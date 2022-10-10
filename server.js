@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 const connectDB = require('./config/dbase');
 connectDB();
 
-
+app.use('/api/files', require('./routes/files'))
 app.listen(PORT, ()=>{
     console.log(`Listening on port ${PORT}`);
 });
