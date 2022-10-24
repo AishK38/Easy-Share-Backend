@@ -1,0 +1,14 @@
+const router = require('express').Router();
+const File = require('../models/file1');
+
+router.get('/:uuid', async(req, res) => {
+    const file = await File.findOne({uuid: req.params.uuid});
+    if(!file){
+        return res.render('download', { error: 'Link is expired!'});
+    }
+
+    const filePath = `${__dirname}/../${file.path}`;
+    res.download(filePath);
+})
+
+module.exports = router;
