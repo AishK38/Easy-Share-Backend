@@ -7,6 +7,7 @@ app.use(express.static('public'));
 const connectDB = require('./config/dbase');
 connectDB();
 
+app.use(express.json());
 app.set('views',path.join(__dirname, '/views'));
 app.set('view engine', 'ejs');
 app.use('/api/files', require('./routes/files'));

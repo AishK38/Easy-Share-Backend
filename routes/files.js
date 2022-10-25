@@ -51,11 +51,11 @@ router.post('/send', async (req, res) => {
     file.receiver = emailTo;
     const response = await file.save();
     // send mail
-    const sendMail = require('../services/mailService');
+    const sendMail = require('../services/emailService');
     sendMail({
       from: emailFrom,
       to: emailTo,
-      subject: 'inShare file sharing',
+      subject: 'EasyShare file sharing',
       text: `${emailFrom} shared a file with you.`,
       html: require('../services/emailTemplate')({
                 emailFrom, 
@@ -74,7 +74,5 @@ router.post('/send', async (req, res) => {
 
 });
 
-router.post('/send', (req,res)=> {
-  
-});
+
 module.exports = router;
